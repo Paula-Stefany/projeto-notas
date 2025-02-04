@@ -12,7 +12,7 @@ const BACKGROUND_STYLE: React.CSSProperties = {
   zIndex: '1000'
 }
 
-export default function Modal({isOpen, setIsOpen, note, setNote, registerNote}: ModalProps) {
+export default function Modal({isOpen, setIsOpen, note, setNote, registerNote, isEditedNote}: ModalProps) {
 
     if (!isOpen) return null;
 
@@ -36,9 +36,7 @@ export default function Modal({isOpen, setIsOpen, note, setNote, registerNote}: 
                   required
                   onChange={(e) => setNote(prev => ({...prev, title: e.target.value}))}>
                 </input>
-              </div>
-
-              <div className='form-group'>
+              
                 <label>* Descrição</label>
                 <textarea
                   name='description'
@@ -49,8 +47,8 @@ export default function Modal({isOpen, setIsOpen, note, setNote, registerNote}: 
                 </textarea>
               </div>
 
-              <div className='form-group'>
-                <label>* Prioridade: </label>
+              <div className='form-checkbox'>
+                <label className='priority-title'>* Prioridade: </label>
                 <div className='checkbox-group'>
                   <label>
                     <input className='checkbox'
@@ -83,7 +81,7 @@ export default function Modal({isOpen, setIsOpen, note, setNote, registerNote}: 
                 </div>
               </div>
 
-              <button className='form-button' type='submit' >Salvar</button>
+              <button className='form-button' type='submit' >{isEditedNote.enabled ? 'Editar' : 'Salvar'}</button>
             </form>
           </div>
 

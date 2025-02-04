@@ -2,7 +2,7 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 import { useEffect, useState, useRef} from 'react'
 import Modal from './components/modal'
-import {Note, Priorities} from "./types";
+import {Note, Priorities, EditedNote} from "./types";
 
 
 
@@ -31,7 +31,7 @@ function App() {
     priorities: {high: false, medium: false, low: false}
   });
 
-  const [editedNote, setEditedNote] = useState({
+  const [editedNote, setEditedNote] = useState<EditedNote>({
     enabled: false,
     note: {title: "", description: "", priorities: {high: false, medium:false, low:false}}
   })
@@ -201,6 +201,7 @@ function App() {
           note={note}
           setNote={setNote}
           registerNote={addNote}
+          isEditedNote={editedNote}
         />
       )}
       

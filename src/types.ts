@@ -10,6 +10,10 @@ export interface Note{
     priorities: Priorities;
 }
 
+export interface EditedNote{
+    enabled: boolean;
+    note: Note;
+}
 
 export interface ModalProps{
     isOpen: boolean;
@@ -17,4 +21,5 @@ export interface ModalProps{
     note: Note;
     setNote: React.Dispatch<React.SetStateAction<Note>>;
     registerNote: () => void;
+    isEditedNote: EditedNote;
 }
