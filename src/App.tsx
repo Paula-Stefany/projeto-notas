@@ -1,6 +1,6 @@
 import reactLogo from './assets/react.svg'
 import './App.css'
-import { useEffect, useState, useRef} from 'react'
+import { useEffect, useState, useRef, useMemo} from 'react'
 import Modal from './components/modal'
 import {Note, Priorities, EditedNote} from "./types";
 
@@ -123,6 +123,10 @@ function App() {
 
   }, [notes])
 
+  const totalTarefas = useMemo(() => {
+    return notes.length;
+  }, [notes])
+
   return (
     <>
       <header className='notes-header'>
@@ -132,7 +136,7 @@ function App() {
 
       <div className='functionalitys'>
         <button aria-controls='form' onClick={() => setIsModalOpen(true)} >+</button>
-        <p>3 Nota(s)!</p>
+        <p>{totalTarefas} Nota(s)!</p>
       </div>
 
       <h2 className='priority-title'>Priority order:</h2>
